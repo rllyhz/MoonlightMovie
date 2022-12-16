@@ -1,11 +1,14 @@
 @import './reset.css';
+@import './top-bar.css';
+@import './search-bar.css';
 
 :root {
-  --primary-color: purple;
+  --primary-color: rgb(123, 0, 255);
+  --secondary-color: rgb(228, 49, 153);
 }
 
 input {
-  padding: .25rem .5rem;
+  padding: .5rem .5rem;
   border: 1px solid rgb(204, 204, 204);
   border-radius: 4px;
   transition: all 200ms ease-in-out;
@@ -17,24 +20,4 @@ button {
   border: none;
   border-radius: 4px;
   padding: .55rem 1rem;
-}
-
-header {
-  background-color: var(--primary-color);
-  color: white;
-  position: sticky;
-  position: -webkit-sticky;
-}
-nav {
-  font-size: 1.2rem;
-  font-weight: 400;
-}
-
-.search .search-input {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.search .search-input input {
-  margin-right: .5rem;
 }
