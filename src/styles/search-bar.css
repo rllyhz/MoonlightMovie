@@ -1,0 +1,33 @@
+.search {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .5rem;
+  padding: 0 1rem;
+}
+.search input {
+  flex: 1 1 360px;
+}
+.search button {
+  flex: 0 0 80px;
+  align-self: flex-end;
+  background-color: var(--secondary-color);
+  color: white;
+  transition: all 200ms ease-in-out;
+  box-shadow: 1px 1px 4px rgba(93, 93, 93, 0.393);
+}
+.search button:hover,
+.search button:active {
+  filter: brightness(.92);
+}
+.search button:active {
+  box-shadow: none;
+}
+
+@media screen and (min-width: 428px) {
+  .search {
+    padding: 0 25%;
+  }
+}
