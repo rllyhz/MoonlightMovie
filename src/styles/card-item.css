@@ -1,0 +1,50 @@
+.card-content {
+  width: 30%;
+  margin: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  /* background-color: grey;   */
+  position: relative;
+  box-shadow: 2px 2px 8px rgba(75, 75, 75, 0.208);
+  cursor: pointer;
+}
+.card-content .card-image {
+  position: relative;
+}
+.card-content .card-image::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: -moz-linear-gradient(0deg, black, rgba(0, 0, 0, 0.150));
+  background: linear-gradient(0deg, black, rgba(0, 0, 0, 0.150));
+}
+.card-content .card-image img {
+  width: 100%;
+  height: 100%;
+  filter: blur(0);
+  transition: filter 200ms ease-in-out;
+}
+.card-content .card-detail {
+  position: absolute;
+  height: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  color: white;
+  padding: 1rem;
+}
+.card-content .card-detail > :first-child {
+  margin-bottom: .35rem;
+  font-size: .8rem;
+}
+
+.card-content:hover .card-image img {
+  filter: blur(2px);
+}
+.card-content .card-detail h3:hover {
+  text-decoration: underline;
+}
