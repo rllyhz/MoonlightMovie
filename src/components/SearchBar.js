@@ -18,7 +18,7 @@ export default class SearchBar extends HTMLElement {
 
     this.querySelector('.search-button').addEventListener('click', (e) => {
       const currentValue = this.querySelector('.search-input').value;
-      onSubmitCallback(currentValue, e.target);
+      onSubmitCallback(currentValue, e);
     });
   }
 }
