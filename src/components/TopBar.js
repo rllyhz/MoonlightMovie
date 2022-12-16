@@ -1,17 +1,16 @@
 export default class TopBar extends HTMLElement {
   static tagName = 'top-bar';
 
-  connectedCallback() {
+  set title(value) {
+    this._title = value;
     this.render();
   }
 
   render() {
-    const title = this.dataset.title
-
     this.innerHTML = `
       <header>
         <nav>
-          <a href='/'>${title}</a>
+          <a href='/'>${this._title}</a>
         </nav>
       </header>
     `;
