@@ -1,11 +1,13 @@
 // Helpers
 import { createElement, appendBody } from './helpers/DomHelpers';
 import { initApp, appConfiguration, setTitle } from './helpers/AppHelpers';
+import { getNowPlayingMovies } from './networks/Api';
 // Styles
 import './styles/app.css';
 // Components
 import TopBar from './components/TopBar';
 import SearchBar from './components/SearchBar';
+import CardItem from './components/CardItem';
 
 initApp({ name: 'MoonlightMovie' });
 setTitle(`${appConfiguration().title} | Home`);
@@ -37,4 +39,21 @@ appendBody(
   })
 );
 
-// getNowPlayingMovies().then(res => console.log(res.data))
+getNowPlayingMovies().then(res => {
+  res.data.results.forEach(movie => {
+    const movieElem = createElement({
+      tagName: CardItem.tagName,
+      data: {
+        movieData: {
+          id: movie.id,
+          title: movie.original_title,
+          releaseDate: movie.release_date,
+          imagePath: movie.backdrop_path,
+          clickCallback: (movie) => console.log('clicking movie: ' + movie.title)
+        }
+      }
+    });
+
+    appendBody(movieElem);
+  });
+});
