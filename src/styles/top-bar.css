@@ -1,0 +1,15 @@
+header {
+  background-color: var(--primary-color);
+  color: white;
+  position: sticky;
+  position: -webkit-sticky;
+}
+nav {
+  font-size: 1.2rem;
+  font-weight: 400;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 1px 4px rgba(93, 93, 93, 0.393);
+}
