@@ -48,9 +48,11 @@ export class Router {
   }
 
   static navigateUp() {
-    if (history.length > 1) {
-      history.shift();
+    if (history.length <= 1) {
+      return;
     }
+
+    history.shift();
 
     if (preReloadCallback != null && typeof(preReloadCallback) == 'function') {
       preReloadCallback();

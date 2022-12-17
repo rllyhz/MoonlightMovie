@@ -19,7 +19,11 @@ appendBody(
     tagName: TopBar.tagName,
     id: 'my-top-bar',
     data: {
-      title: appConfiguration().name
+      config: {
+        title: appConfiguration().name,
+        shouldNavigateUpShown: false,
+        onBackPressed: () => { Router.navigateUp() }
+      }
     }
   })
 );

@@ -13,6 +13,7 @@ export default (query = null) => {
   }
 
   setTitle(`${appConfiguration().name} | Search Result`);
+  getElem('header .back-button').style.visibility = 'visible';
   
   // Loading
   getElem('.container-app').appendChild(

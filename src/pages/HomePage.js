@@ -6,6 +6,8 @@ import Movie from '../data/Movie';
 
 export default (data = null) => {
   setTitle(`${appConfiguration().name} | Home`);
+  getElem('header .back-button').style.visibility = 'hidden';
+  getElem('.search-input').value = '';
 
   // NowPlayingMovies
   getNowPlayingMovies().then(res => {
