@@ -21,7 +21,7 @@ export class Router {
     return history[0];
   }
 
-  static load(initialPath) {
+  static load({ initialPath }) {
     if (history.length <= 0) {
       history.push(initialPath);
     }
