@@ -9,6 +9,7 @@ import TopBar from './components/TopBar';
 import SearchBar from './components/SearchBar';
 import HomePage from './pages/HomePage';
 import SearchResultPage from './pages/SearchResultPage';
+import swal from 'sweetalert';
 
 initApp({ name: 'MoonlightMovie' });
 
@@ -40,7 +41,7 @@ appendBody(
             if (Router.getActivePath() == PATH.search) {
               Router.navigateUp();
             } else {
-              alert('Please insert you query!');
+              swal('Searching Failed','Please insert your query!', 'warning');
             }
           }
         }
@@ -67,7 +68,7 @@ Router.onReload((path, data) => {
   } else if (path == PATH.search) {
     SearchResultPage(data);
   } else {
-    alert('Page not found!');
+    swal('Opps...','Page not found!', 'error');
     Router.navigateTo(PATH.home);
   }
 });
