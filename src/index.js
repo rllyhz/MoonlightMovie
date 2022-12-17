@@ -1,18 +1,16 @@
 // Helpers
-import { createElement, appendBody, addSpacer, getElem } from './helpers/DomHelpers';
-import { initApp, appConfiguration, setTitle } from './helpers/AppHelpers';
-import { getNowPlayingMovies, getPopularMovies, getTopRatedMovies } from './networks/Api';
-// Data
-import Movie from './data/Movie';
+import { Router, PATH } from './helpers/RouteHelpers';
+import { createElement, appendBody, getElem } from './helpers/DomHelpers';
+import { initApp, appConfiguration } from './helpers/AppHelpers';
 // Styles
 import './styles/app.css';
 // Components
 import TopBar from './components/TopBar';
 import SearchBar from './components/SearchBar';
-import CardList from './components/CardList';
+import HomePage from './pages/HomePage';
+import SearchResultPage from './pages/SearchResultPage';
 
 initApp({ name: 'MoonlightMovie' });
-setTitle(`${appConfiguration().title} | Home`);
 
 // TopBar
 appendBody(
@@ -35,7 +33,13 @@ appendBody(
         type: 'text',
         placeholderText: 'Search here (Ex. Avatar)',
         submitText: 'Search',
-        onSubmitCallback: (value) => { getElem('.container-app').innerHTML = ''; }
+        onSubmitCallback: (value) => { 
+          if (value.length > 0) {
+            Router.navigateTo(PATH.search, value);
+          } else {
+            alert('Please insert you query!');
+          }
+        }
       }
     }
   })
@@ -48,79 +52,17 @@ appendBody(
   })
 );
 
-// NowPlayingMovies
-getNowPlayingMovies().then(res => {
-  console.clear();
-  addSpacer({orientation: 'vertical', size: '2rem', parent: getElem('.container-app')});
-
-  const movies = res.data.results.map(
-    item => new Movie(item.id, item.title, item.release_date, item.backdrop_path)
-  );
-
-  getElem('.container-app').appendChild(
-    createElement({
-      tagName: CardList.tagName,
-      dataset: {
-        title: 'Now Playing Movies'
-      },
-      data: {
-        adapterData: {
-          listItem: movies,
-          onItemClickedCallback: (movie) => { console.log(`Clicked on movie: ${movie.title}`); }
-        }
-      }
-    })
-  );
+// Router init
+Router.onPreReload(() => {
+  getElem('.container-app').innerHTML = '';
 });
 
-// PopularMovies
-getPopularMovies().then(res => {
-  console.clear();
-  addSpacer({orientation: 'vertical', size: '2rem', parent: getElem('.container-app')});
-
-  const movies = res.data.results.map(
-    item => new Movie(item.id, item.title, item.release_date, item.backdrop_path)
-  );
-
-  getElem('.container-app').appendChild(
-    createElement({
-      tagName: CardList.tagName,
-      dataset: {
-        title: 'Popular Movies'
-      },
-      data: {
-        adapterData: {
-          listItem: movies,
-          onItemClickedCallback: (movie) => { console.log(`Clicked on movie: ${movie.title}`); }
-        }
-      }
-    })
-  );
+Router.onReload((path, data) => {
+  if (path == PATH.home) {
+    HomePage();
+  } else if (path == PATH.search) {
+    SearchResultPage(data);
+  }
 });
 
-// TopRatedMovies
-getTopRatedMovies().then(res => {
-  console.clear();
-  addSpacer({orientation: 'vertical', size: '2rem', parent: getElem('.container-app')});
-
-  const movies = res.data.results.map(
-    item => new Movie(item.id, item.title, item.release_date, item.backdrop_path)
-  );
-
-  getElem('.container-app').appendChild(
-    createElement({
-      tagName: CardList.tagName,
-      dataset: {
-        title: 'Top Rated Movies'
-      },
-      data: {
-        adapterData: {
-          listItem: movies,
-          onItemClickedCallback: (movie) => { console.log(`Clicked on movie: ${movie.title}`); }
-        }
-      }
-    })
-  );
-
-  addSpacer({orientation: 'vertical', size: '2rem', parent: getElem('.container-app')});
-});
+Router.load(PATH.home);
