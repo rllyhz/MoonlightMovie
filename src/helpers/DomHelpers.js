@@ -29,8 +29,6 @@ export const createElement = ({tagName, id = '', classNames = '', dataset = {}, 
       const [key, value] = keyValue;
       newElement.style[key] = value;
     });
-
-    console.log(newElement.style);
   }
 
   if (typeof(data) === 'object' && Object.entries(data).length > 0) {
