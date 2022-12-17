@@ -1,40 +1,41 @@
+const { merge } = require("webpack-merge");
+const common = require("./webpack.common");
 const TerserPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { merge } = require('webpack-merge');
-const common = require('./webpack.common');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = merge(common, {
-  mode: 'production',
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: '/node_modules/',
-        use: 'babel-loader'
-      },
-      {
-        test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
-      }
-    ]
-  },
-  plugins: [
-    new MiniCssExtractPlugin(),
-    new CleanWebpackPlugin()
-  ],
-  optimization: {
-    minimize: true,
-    minimizer: [new TerserPlugin()],
-    runtimeChunk: 'single',
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all'
+    mode: "production",
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: "/node_modules/",
+                use: [
+                    {
+                        loader: "babel-loader",
+                        options: {
+                            presets: ["@babel/preset-env"]
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    plugins: [
+      new CleanWebpackPlugin()
+    ],
+    optimization: {
+      minimize: true,
+      minimizer: [new TerserPlugin()],
+      runtimeChunk: 'single',
+      splitChunks: {
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all'
+          }
         }
       }
     }
-  }
-});
+})
