@@ -6,13 +6,8 @@ export const appendBody = (node) => {
   document.body.appendChild(node);
 }
 
-export const createElement = ({tagName = 'div', id = '', classNames = '', dataset = {}, data = {}, styles = {}, shadowElement = false, innerText = ''}) => {
+export const createElement = ({tagName = 'div', id = '', classNames = '', dataset = {}, data = {}, styles = {}, innerText = ''}) => {
   const newElement = document.createElement(tagName);
-
-  if (shadowElement) {
-    newElement.attachShadow({ mode: 'open' });
-    newElement.display = 'block';
-  }
 
   if (classNames.length > 0) newElement.classList.add(classNames);
   if (id.length > 0) newElement.id = id;
