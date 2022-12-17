@@ -3,14 +3,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   gap: .5rem;
   padding: 0 1rem;
 }
-.search input {
+.search .search-input {
   flex: 1 1 360px;
 }
-.search button {
+.search .search-button {
   flex: 0 0 80px;
   align-self: flex-end;
   background-color: var(--secondary-color);
@@ -26,6 +25,11 @@
   box-shadow: none;
 }
 
+@media screen and (max-width: 410px) {
+  .search {
+    flex-wrap: wrap;
+  }
+}
 @media screen and (min-width: 428px) {
   .search {
     padding: 0 25%;
