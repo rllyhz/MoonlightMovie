@@ -1,12 +1,16 @@
 @import './reset.css';
 @import './top-bar.css';
 @import './search-bar.css';
+@import './loading.css';
+@import './search-result.css';
 @import './card-item.css';
 @import './card-list.css';
 
 :root {
   --primary-color: rgb(123, 0, 255);
   --secondary-color: rgb(228, 49, 153);
+  --grey-color: #f3f3f3;
+  --dark-color: black;
 }
 
 input {

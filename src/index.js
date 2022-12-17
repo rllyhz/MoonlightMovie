@@ -37,7 +37,11 @@ appendBody(
           if (value.length > 0) {
             Router.navigateTo(PATH.search, value);
           } else {
-            alert('Please insert you query!');
+            if (Router.getActivePath() == PATH.search) {
+              Router.navigateUp();
+            } else {
+              alert('Please insert you query!');
+            }
           }
         }
       }

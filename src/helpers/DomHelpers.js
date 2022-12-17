@@ -6,7 +6,7 @@ export const appendBody = (node) => {
   document.body.appendChild(node);
 }
 
-export const createElement = ({tagName, id = '', classNames = '', dataset = {}, data = {}, styles = {}, shadowElement = false}) => {
+export const createElement = ({tagName = 'div', id = '', classNames = '', dataset = {}, data = {}, styles = {}, shadowElement = false}) => {
   const newElement = document.createElement(tagName);
 
   if (shadowElement) {

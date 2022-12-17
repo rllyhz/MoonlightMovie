@@ -17,6 +17,10 @@ export class Router {
     reloadCallback = callback;
   }
 
+  static getActivePath() {
+    return history[0];
+  }
+
   static load(initialPath) {
     if (history.length <= 0) {
       history.push(initialPath);
