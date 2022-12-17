@@ -6,7 +6,7 @@ export const appendBody = (node) => {
   document.body.appendChild(node);
 }
 
-export const createElement = ({tagName = 'div', id = '', classNames = '', dataset = {}, data = {}, styles = {}, shadowElement = false}) => {
+export const createElement = ({tagName = 'div', id = '', classNames = '', dataset = {}, data = {}, styles = {}, shadowElement = false, innerText = ''}) => {
   const newElement = document.createElement(tagName);
 
   if (shadowElement) {
@@ -36,6 +36,10 @@ export const createElement = ({tagName = 'div', id = '', classNames = '', datase
       const [key, value] = keyValue;
       newElement[key] = value;
     });
+  }
+
+  if (innerText.length > 0) {
+    newElement.innerText = innerText;
   }
 
   return newElement;

@@ -25,6 +25,20 @@ export default (query = null) => {
   searchMovies(query).then(res => {
     console.clear();
     getElem('.container-app').innerHTML = '';
+
+    if (res.data.results.length <= 0) {
+      getElem('.container-app').appendChild(
+        createElement({
+          tagName: 'div',
+          styles: {
+            textAlign: 'center'
+          },
+          innerText: 'Movie not found!'
+        })
+      );
+      return;
+    }
+
     addSpacer({orientation: 'vertical', size: '2rem', parent: getElem('.container-app')});
 
     const movies = res.data.results.map(
