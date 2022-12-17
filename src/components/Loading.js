@@ -9,7 +9,7 @@ export default class Loading extends HTMLElement {
     this.innerHTML = `
       <div class='loading-wrapper'>
         <div class='loading'></div>
-      <div>
+      </div>
     `;
   }
 }
