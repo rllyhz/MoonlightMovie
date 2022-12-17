@@ -31,3 +31,15 @@ img {
   max-height: 100%;
   object-fit: fill;
 }
+
+.swal-modal {
+  font-family: 'Poppins', sans-serif;
+}
+.swal-button {
+  background-color: var(--secondary-color);
+}
+.swal-button:hover,
+.swal-button:active {
+  background-color: var(--secondary-color) !important;
+  filter: brightness(.82);
+}
