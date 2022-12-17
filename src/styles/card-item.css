@@ -1,12 +1,11 @@
 .card-content {
-  width: 30%;
-  margin: 1rem;
   border-radius: 8px;
   overflow: hidden;
   /* background-color: grey;   */
   position: relative;
-  box-shadow: 2px 2px 8px rgba(75, 75, 75, 0.208);
+  box-shadow: 2px 2px 8px rgba(61, 61, 61, 0.313);
   cursor: pointer;
+  transition: all 200ms ease-in-out;
 }
 .card-content .card-image {
   position: relative;
@@ -43,7 +42,13 @@
 }
 
 .card-content:hover .card-image img {
-  filter: blur(2px);
+  filter: blur(1px);
+}
+.card-content:active .card-image img {
+  filter: blur(3px);
+}
+.card-content:active {
+  box-shadow: none;
 }
 .card-content .card-detail h3:hover {
   text-decoration: underline;

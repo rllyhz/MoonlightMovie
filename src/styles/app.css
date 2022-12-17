@@ -2,6 +2,7 @@
 @import './top-bar.css';
 @import './search-bar.css';
 @import './card-item.css';
+@import './card-list.css';
 
 :root {
   --primary-color: rgb(123, 0, 255);

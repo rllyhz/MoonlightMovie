@@ -1,5 +1,6 @@
 import { imageBaseUrl } from "../networks/Api";
 import { formatDate, splitDateString } from "../helpers/DataHelpers";
+import Movie from "../data/Movie";
 
 export default class CardItem extends HTMLElement {
   static tagName = 'card-item'
@@ -25,10 +26,11 @@ export default class CardItem extends HTMLElement {
       </div>
     `;
 
-    this.querySelector('.card-content').addEventListener('click', e => {
-      clickCallback({
-        id, title, releaseDate
-      }, e);
+    this.querySelector('.card-content').addEventListener('click', event => {
+      clickCallback(
+        new Movie(id, title, releaseDate, imagePath),
+        event
+      );
     });
   }
 }
