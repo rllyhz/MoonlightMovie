@@ -1,4 +1,5 @@
 import { appConfiguration, setTitle } from '../helpers/AppHelpers';
+import { Router, PATH } from '../helpers/RouteHelpers';
 import { createElement, addSpacer, getElem } from '../helpers/DomHelpers';
 import { getNowPlayingMovies, getPopularMovies, getTopRatedMovies } from '../networks/Api';
 import CardList from '../components/CardList';
@@ -7,6 +8,7 @@ import Movie from '../data/Movie';
 export default (data = null) => {
   setTitle(`${appConfiguration().name} | Home`);
   getElem('header .back-button').style.visibility = 'hidden';
+  getElem('.search').style.display = 'flex';
   getElem('.search-input').value = '';
 
   // NowPlayingMovies
@@ -27,7 +29,7 @@ export default (data = null) => {
         data: {
           adapterData: {
             listItem: movies,
-            onItemClickedCallback: (movie) => { console.log(`Clicked on movie: ${movie.title}`); }
+            onItemClickedCallback: (movie) => { Router.navigateTo(PATH.detail, movie.id); }
           }
         }
       })
@@ -52,7 +54,7 @@ export default (data = null) => {
         data: {
           adapterData: {
             listItem: movies,
-            onItemClickedCallback: (movie) => { console.log(`Clicked on movie: ${movie.title}`); }
+            onItemClickedCallback: (movie) => { Router.navigateTo(PATH.detail, movie.id); }
           }
         }
       })
@@ -77,7 +79,7 @@ export default (data = null) => {
         data: {
           adapterData: {
             listItem: movies,
-            onItemClickedCallback: (movie) => { console.log(`Clicked on movie: ${movie.title}`); }
+            onItemClickedCallback: (movie) => { Router.navigateTo(PATH.detail, movie.id); }
           }
         }
       })

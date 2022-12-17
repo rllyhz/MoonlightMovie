@@ -13,4 +13,5 @@ const api = axios.create({
 export const getTopRatedMovies = () => api.get(`/movie/top_rated?api_key=${apiKey}`);
 export const getPopularMovies = () => api.get(`/movie/popular?api_key=${apiKey}`);
 export const getNowPlayingMovies = () => api.get(`/movie/now_playing?api_key=${apiKey}`);
+export const getDetailMovieOf = (id) => api.get(`/movie/${id}?api_key=${apiKey}`);
 export const searchMovies = (query) => api.get(`/search/movie?query=${query}&api_key=${apiKey}`);

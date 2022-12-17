@@ -9,6 +9,7 @@ import TopBar from './components/TopBar';
 import SearchBar from './components/SearchBar';
 import HomePage from './pages/HomePage';
 import SearchResultPage from './pages/SearchResultPage';
+import MovieDetailPage from './pages/MovieDetailPage';
 import swal from 'sweetalert';
 
 initApp({ name: 'MoonlightMovie' });
@@ -66,11 +67,13 @@ Router.onPreReload(() => {
   getElem('.container-app').innerHTML = '';
 });
 
-Router.onReload((path, data) => {
-  if (path == PATH.home) {
+Router.onReload((currentPath, data) => {
+  if (currentPath == PATH.home) {
     HomePage();
-  } else if (path == PATH.search) {
+  } else if (currentPath == PATH.search) {
     SearchResultPage(data);
+  } else if (currentPath == PATH.detail) {
+    MovieDetailPage(data);
   } else {
     swal('Opps...','Page not found!', 'error');
     Router.navigateTo(PATH.home);
