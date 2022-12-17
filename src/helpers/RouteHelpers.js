@@ -4,7 +4,8 @@ const history = [];
 
 export const PATH = {
   home: 0,
-  search: 1
+  search: 1,
+  detail: 2,
 };
 
 export class Router {
