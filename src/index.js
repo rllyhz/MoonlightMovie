@@ -66,7 +66,10 @@ Router.onReload((path, data) => {
     HomePage();
   } else if (path == PATH.search) {
     SearchResultPage(data);
+  } else {
+    alert('Page not found!');
+    Router.navigateTo(PATH.home);
   }
 });
 
-Router.load(PATH.home);
+Router.load({ initialPath: PATH.home });
